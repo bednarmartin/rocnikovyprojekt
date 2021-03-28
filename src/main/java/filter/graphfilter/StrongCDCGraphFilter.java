@@ -12,19 +12,11 @@ import graph.Graph;
 import java.util.ArrayList;
 import java.util.Set;
 
-public class StrongCDCGraphFilter implements GraphFilter {
+public class StrongCDCGraphFilter implements CDCFilter {
 
     @Override
     public boolean filter(Graph graph) {
-        CycleFinder cycleFinder = new CycleFinder(graph);
-        Set<Cycle> cycles = cycleFinder.findAllCycles();
-
-        CycleFilter chordCycleFilter = new ChordCycleFilter();
-        chordCycleFilter.filter(cycles, graph);
-
-        CDCFinder cdcFinder = new CDCFinder(graph, new ArrayList<>(cycles), new StopRecursionException());
-        Set<Set<Cycle>> CDCs = cdcFinder.find();
-        return !CDCs.isEmpty();
+        return !this.getCDCs(graph).isEmpty();
     }
 
     @Override
@@ -35,6 +27,18 @@ public class StrongCDCGraphFilter implements GraphFilter {
     @Override
     public boolean is(Graph graph) {
         return this.filter(graph);
+    }
+
+    @Override
+    public Set<Set<Cycle>> getCDCs(Graph graph) {
+        CycleFinder cycleFinder = new CycleFinder(graph);
+        Set<Cycle> cycles = cycleFinder.findAllCycles();
+
+        CycleFilter chordCycleFilter = new ChordCycleFilter();
+        chordCycleFilter.filter(cycles, graph);
+
+        CDCFinder cdcFinder = new CDCFinder(graph, new ArrayList<>(cycles), new StopRecursionException());
+        return cdcFinder.find();
     }
 
 }

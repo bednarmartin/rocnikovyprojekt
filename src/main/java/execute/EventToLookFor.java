@@ -3,6 +3,7 @@ package execute;
 import filter.Filter;
 import graph.Graph;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EventToLookFor {
@@ -23,4 +24,8 @@ public class EventToLookFor {
         }
     }
 
+    public void processEvent(Graph graph, int number, String text, Filter... filters) {
+        List<Filter> listOfFilters = new ArrayList<>(List.of(filters));
+        processEvent(graph, number, text, listOfFilters);
+    }
 }
