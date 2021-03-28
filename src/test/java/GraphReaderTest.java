@@ -18,9 +18,9 @@ public class GraphReaderTest {
         GraphReader graphReader = new AdjacentVerticesGraphReader();
         Graph graph = graphReader.read("./src/main/resources/cubicgraphs/6g3e.txt", 6, 1);
         Assertions.assertAll(
-                () -> Assertions.assertEquals(graph.getNumberOfVertices(), 6),
-                () -> Assertions.assertEquals(graph.getEdges().size(), 9),
-                () -> Assertions.assertEquals(graph.getVertices().size(), 6));
+                () -> Assertions.assertEquals(6, graph.getNumberOfVertices()),
+                () -> Assertions.assertEquals(9, graph.getEdges().size()),
+                () -> Assertions.assertEquals(6, graph.getVertices().size()));
 
         for (Vertex vertex : graph.getVertices()) {
             Assertions.assertEquals(vertex.getAdjVertices().size(), 3);
@@ -98,12 +98,12 @@ public class GraphReaderTest {
     void checkNumberOfGraph() {
         GraphReader graphReader = new AdjacentVerticesGraphReader();
         Assertions.assertAll(
-                () -> Assertions.assertEquals(graphReader.getNumberOfGraphs("./src/main/resources/cubicgraphs/4g3e.txt", 4), 1),
-                () -> Assertions.assertEquals(graphReader.getNumberOfGraphs("./src/main/resources/cubicgraphs/6g3e.txt", 6), 2),
-                () -> Assertions.assertEquals(graphReader.getNumberOfGraphs("./src/main/resources/cubicgraphs/8g3e.txt", 8), 5),
-                () -> Assertions.assertEquals(graphReader.getNumberOfGraphs("./src/main/resources/cubicgraphs/10g3e.txt", 10), 19),
-                () -> Assertions.assertEquals(graphReader.getNumberOfGraphs("./src/main/resources/cubicgraphs/12g3e.txt", 12), 85),
-                () -> Assertions.assertEquals(graphReader.getNumberOfGraphs("./src/main/resources/cubicgraphs/14g3e.txt", 14), 509)
+                () -> Assertions.assertEquals(1, graphReader.getNumberOfGraphs("./src/main/resources/cubicgraphs/4g3e.txt", 4)),
+                () -> Assertions.assertEquals(2, graphReader.getNumberOfGraphs("./src/main/resources/cubicgraphs/6g3e.txt", 6)),
+                () -> Assertions.assertEquals(5, graphReader.getNumberOfGraphs("./src/main/resources/cubicgraphs/8g3e.txt", 8)),
+                () -> Assertions.assertEquals(19, graphReader.getNumberOfGraphs("./src/main/resources/cubicgraphs/10g3e.txt", 10)),
+                () -> Assertions.assertEquals(85, graphReader.getNumberOfGraphs("./src/main/resources/cubicgraphs/12g3e.txt", 12)),
+                () -> Assertions.assertEquals(509, graphReader.getNumberOfGraphs("./src/main/resources/cubicgraphs/14g3e.txt", 14))
         );
     }
 
@@ -112,13 +112,14 @@ public class GraphReaderTest {
     void checkNumberOfSnarks() {
         GraphReader graphReader = new SnarkFormatGraphReader();
         Assertions.assertAll(
-                () -> Assertions.assertEquals(graphReader.getNumberOfGraphs("./src/main/resources/snarks/s18_c4.txt", 18), 2),
-                () -> Assertions.assertEquals(graphReader.getNumberOfGraphs("./src/main/resources/snarks/s20_c4.txt", 20), 6),
-                () -> Assertions.assertEquals(graphReader.getNumberOfGraphs("./src/main/resources/snarks/s22_c4.txt", 22), 20),
-                () -> Assertions.assertEquals(graphReader.getNumberOfGraphs("./src/main/resources/snarks/s24_c4.txt", 24), 38),
-                () -> Assertions.assertEquals(graphReader.getNumberOfGraphs("./src/main/resources/snarks/s26_c4.txt", 26), 280),
-                () -> Assertions.assertEquals(graphReader.getNumberOfGraphs("./src/main/resources/snarks/s28_c4.txt", 28), 2900),
-                () -> Assertions.assertEquals(graphReader.getNumberOfGraphs("./src/main/resources/snarks/s30_c4.txt", 30), 28399)
+                () -> Assertions.assertEquals(2, graphReader.getNumberOfGraphs("./src/main/resources/snarks/s18_c4.txt", 18)),
+                () -> Assertions.assertEquals(6, graphReader.getNumberOfGraphs("./src/main/resources/snarks/s20_c4.txt", 20)),
+                () -> Assertions.assertEquals(20, graphReader.getNumberOfGraphs("./src/main/resources/snarks/s22_c4.txt", 22)),
+                () -> Assertions.assertEquals(38, graphReader.getNumberOfGraphs("./src/main/resources/snarks/s24_c4.txt", 24)),
+                () -> Assertions.assertEquals(280, graphReader.getNumberOfGraphs("./src/main/resources/snarks/s26_c4.txt", 26)),
+                () -> Assertions.assertEquals(2900, graphReader.getNumberOfGraphs("./src/main/resources/snarks/s28_c4.txt", 28)),
+                () -> Assertions.assertEquals(28399, graphReader.getNumberOfGraphs("./src/main/resources/snarks/s30_c4.txt", 30))
+
         );
     }
 
