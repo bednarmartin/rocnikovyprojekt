@@ -39,4 +39,9 @@ public class OutputFilterVisitor implements FilterVisitor<String> {
         throw new IllegalArgumentException("YOU CAN'T USE TRUE FILTER WITH OUTPUT VISITOR");
     }
 
+    @Override
+    public String visit(LessThanGirthFiveGraphFilter lessThanGirthFiveGraphFilter) {
+        return "GIRTH LESS THAN FIVE";
+    }
+
 }

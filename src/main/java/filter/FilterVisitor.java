@@ -18,4 +18,6 @@ public interface FilterVisitor<T> {
     T visit(NegationFilter negationFilter);
 
     T visit(TrueFilter trueFilter);
+
+    T visit(LessThanGirthFiveGraphFilter lessThanGirthFiveGraphFilter);
 }
